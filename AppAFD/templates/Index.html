@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+
+    <!-- Pega valor do parâmetro context passado no render da view -->
+        {% for line in list_appointments%}
+            <p>{{ line.PIS }}</p>
+            <p>{{ line.date }}</p>
+            <p>{{ line.hour }}</p>
+        {% endfor %}
+</body>
+</html>
