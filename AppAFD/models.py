@@ -1,7 +1,6 @@
 from django.db import models
 
 #Models of database
-
 class Appointments(models.Model):
     date = models.DateField('date')
     hour = models.TimeField('hour')

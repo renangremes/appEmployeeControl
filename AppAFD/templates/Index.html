@@ -1,3 +1,4 @@
+{% load bootstrap4 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,13 +6,6 @@
     <title>Index</title>
 </head>
 <body>
-    <h1>Hello World</h1>
-
-    <!-- Pega valor do parâmetro context passado no render da view -->
-        {% for line in list_appointments%}
-            <p>{{ line.PIS }}</p>
-            <p>{{ line.date }}</p>
-            <p>{{ line.hour }}</p>
-        {% endfor %}
+    <h2>INDEX</h2>
 </body>
 </html>

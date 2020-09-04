@@ -1,0 +1,27 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Empresa</title>
+    {% bootstrap_css %}
+</head>
+<body>
+    <div class="container">
+        <h1>Dados cadastrais</h1>
+        {% bootstrap_messages %}
+
+        <form action="{% url 'company' %}" method="post" class="form" autocomplete="off">
+            {% csrf_token %} <!-- Em formulário sempre precisará iniciar o token -->
+            {% bootstrap_form form %} <!-- Pega o formulário passado no context da view (variável form) -->
+
+            {% buttons %} <!-- Cria um botão -->
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            {% endbuttons %}
+        </form>
+    </div>
+
+    {% bootstrap_javascript jquery='full' %}
+
+</body>
+</html>

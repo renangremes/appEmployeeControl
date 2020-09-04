@@ -1,0 +1,26 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apontamentos</title>
+    <!-- Carrega o CSS styles na pasta css -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% bootstrap_css %}
+</head>
+<body>
+    {% bootstrap_javascript jquery='full' %}
+    <h1>R1 - MATERIAIS PARA CONSTRUÇÃO</h1>
+    <img src="{% static 'images/01.png' %}"/>
+    <button onclick="teste();">Clique-me</button>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+    <!-- Pega valor do parâmetro context passado no render da view
+        {% for line in list_appointments%}
+            <p>{{ line.PIS }}</p>
+            <p>{{ line.date }}</p>
+            <p>{{ line.hour }}</p>
+        {% endfor %} -->
+</body>
+</html>
