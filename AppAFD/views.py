@@ -1,15 +1,16 @@
+from django.views.generic import TemplateView
 from django.shortcuts import render
 from django.contrib import messages
 from .models import Company, Employees, Appointments
 from .convertAFD import convertAFD
 from .forms import CompanyModelForm, EmployeesModelForm
-
+from datetime import datetime
 
 #Here you define the views. Receive parameter "request" and return a render (html page)
 #To access the views below, you need to create the route in the urls.py file in project
 
-def index(request):
-    return render(request, 'index.html')
+class IndexView(TemplateView):
+    template_name = 'index.html'
 
 
 def employees(request):
@@ -71,10 +72,10 @@ def company(request):
     return render(request, 'company.html', context)
 
 
-def appointments(request):
-    list_appointments = convertAFD('C:/Temp/AFD.txt', '08382929000134')
+class AppointmentsView(TemplateView):
+    template_name = 'appointments.html'
 
-    context = {
-        'list_appointments': list_appointments,
-    }
-    return render(request, 'appointments.html', context)
+    def get_context_data(self, **kwargs):
+        context = super(AppointmentsView, self).get_context_data(**kwargs) #Recuperando contexto
+        context['list_appointments'] = convertAFD('C:/Temp/AFD.txt', '08382929000134') #Adicionando dados ao contexto
+        return context
