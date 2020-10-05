@@ -3,7 +3,8 @@ from django.shortcuts import render
 from django.contrib import messages
 from .models import Company, Employees, Appointments
 from .convertAFD import convertAFD
-from .forms import CompanyModelForm, EmployeesModelForm
+from django.http import JsonResponse
+from .forms import CompanyModelForm, EmployeesModelForm, AppointmentsModelForm
 from datetime import datetime
 
 #Here you define the views. Receive parameter "request" and return a render (html page)
@@ -72,10 +73,12 @@ def company(request):
     return render(request, 'company.html', context)
 
 
-class AppointmentsView(TemplateView):
-    template_name = 'appointments.html'
+def Appointments(request):
 
-    def get_context_data(self, **kwargs):
-        context = super(AppointmentsView, self).get_context_data(**kwargs) #Recuperando contexto
-        context['list_appointments'] = convertAFD('C:/Temp/AFD.txt', '08382929000134') #Adicionando dados ao contexto
-        return context
+    if str(request.method) == 'POST':
+        arq = convertAFD('C:/TEMP/AFD.txt', '08382929000134')
+
+        for line in arq:
+            print(line)
+
+    return render(request, 'appointments.html')
