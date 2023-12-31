@@ -14,15 +14,47 @@
         <h1>R1 - MATERIAIS PARA CONSTRUÇÃO</h1>
         {% bootstrap_messages %}
 
-        <!--<form action="{% url 'appointments' %}" method="post" class="form" autocomplete="off"> -->
-        <form action="{% url 'appointments' %}" method="post">
+        <div>
+            <label for="lbEmployees">Funcionários</label> <br />
+            <select name="cbEmployees" id="cbEmployees" style="text-transform: uppercase">
+                <option value="" checked="true">FUNCIONÁRIO</option>
+                {% for value in employees %}
+                    <option value="{{value.id}}">{{value.name}}</option>
+                {% endfor %}
+            </select>
+            <select name="cbMonth" id="cbMonth" style="text-transform: uppercase">
+                <option value="" checked="true">MÊS</option>
+                {% for value in months %}
+                    <option value="{{value.id}}">{{value.month}}</option>
+                {% endfor %}
+            </select>
+            <select name="cbYear" id="cbYear" style="text-transform: uppercase">
+                <option value="" checked="true">ANO</option>
+                {% for value in years %}
+                    <option value="{{value}}">{{value}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <form action="{% url 'appointments' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %} <!-- Em formulário sempre precisará iniciar o token -->
+            <div>
+                <label for="file">Selecione o arquivo</label> <br />
+                <input type="file" id="file" name="file" multiple> <br /> <br />
+             </div>
 
             {% buttons %} <!-- Cria um botão -->
-            <button type="submit" class="btn" value="Click" name="btnImport">Importar</button>
+            <div>
+                <button type="submit" class="btn btn-primary" value="Click" id="btnImport" name="btnImport" disabled>Importar</button>
+                <button type="submit" class="btn btn-primary" value="Click" id="btnPrint" name="btnPrint" disabled>Imprimir</button>
+            </div>
             {% endbuttons %}
+
        </form>
     </div>
+
+    {% bootstrap_javascript jquery='full' %}
+    <script src="../static/js/script.js"></script>
 
 </body>
 </html>

@@ -1,6 +1,17 @@
-function teste(){
-     $.get("http://127.0.0.1:8000/saveappointments/", function(data){
-           alert("Deu bom");
-          });
-    alert("Teste Renan2");
-}
+$('input[type=file]').change(function(){
+    if($('input[type=file]').val()==''){
+        $('#btnImport').attr('disabled',true)
+    }
+    else{
+        $('#btnImport').attr('disabled',false);
+    }
+})
+
+$('input[type=cbEmployees]').change(function(){
+    if($('input[type=file]').val()=='FUNCIONÁRIO'){
+        $('#btnPrint').attr('disabled',true)
+    }
+    else{
+
+    }
+})

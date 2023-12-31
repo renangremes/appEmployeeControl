@@ -86,12 +86,12 @@ WSGI_APPLICATION = 'ProjectAFD.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'AppAFD',
-        'USER': 'postgres',
+        'USER': 'root',
         'PASSWORD': 'Masterke!555',
         'HOST': 'localhost',
-        'PORT': '2221',
+        'PORT': '3306',
     }
 }
 
